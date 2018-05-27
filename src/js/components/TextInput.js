@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import slugify from 'slugify';
 import styled from 'styled-components';
+import camelCase from 'camelcase';
 
 import { screenReader } from '../utils/style';
 
@@ -9,11 +9,13 @@ const Label = styled.label`
 	${props => props.label ? null : screenReader}
 `;
 
+const TextInputContainer = styled.div``;
+
 const TextInput = ({ value, name, label, placeholder, theme, handleChange }) => {
-	const slug = slugify(name);
+	const slug = camelCase(name);
 
 	return(
-		<Fragment>
+		<TextInputContainer>
 			<Label 
 				htmlFor={slug} 
 				label={label}
@@ -26,9 +28,10 @@ const TextInput = ({ value, name, label, placeholder, theme, handleChange }) => 
 				id={slug} 
 				name={slug} 
 				value={value}
+				placeholder={placeholder && name}
 				onChange={handleChange}
 			/>
-		</Fragment>
+		</TextInputContainer>
 	);
 };
 
@@ -42,8 +45,8 @@ TextInput.propTypes = {
 
 TextInput.defaultProps = {
 	value: '',
-	label: true,
-	placeholder: false
+	label: false,
+	placeholder: true
 }
 
 export default TextInput;

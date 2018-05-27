@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ThemeProvider, injectGlobal } from 'styled-components';
 
-import { Home } from './views';
+import { EditDojo } from './views';
 
 const theme = {
 	brandMain: 				'#C11712',
@@ -11,6 +11,10 @@ const theme = {
 }
 
 injectGlobal`
+	body {
+		color: ${theme.black}
+	}
+	
 	input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 	select,
 	textarea {
@@ -18,14 +22,22 @@ injectGlobal`
 		border: 1px solid ${theme.inputBorder};
 		color: ${theme.inputColor}
 	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-family: 'Catamaran', sans-serif;
+	}
 `;
 
 class App extends Component {
     render() {
         return (
-            <div className="App" style={{ width: '480px', minHeight: '100vh', margin: '0 auto', padding: '15px', borderRight: '1px solid #aaa', borderLeft: '1px solid #aaa' }}>
+            <div className="App">
 	            <ThemeProvider theme={theme}>          
-	                <Home />
+	                <EditDojo />
 	            </ThemeProvider>
             </div>
         );
