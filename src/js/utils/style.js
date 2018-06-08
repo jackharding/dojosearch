@@ -20,6 +20,7 @@ export const screenReader = () => {
 export const titleSizes = {
 	MD: () => {
 		return `
+			margin-bottom: 15px;
 			font-size: 16px;
 			@media screen and (min-width: ${sizes.medium}) {
 				font-size: 18px;
@@ -28,14 +29,16 @@ export const titleSizes = {
 	},
 	SM: () => {
 		return `
+			margin-bottom: 10px;
 			font-size: 14px;
+			text-transform: uppercase;
 			@media screen and (min-width: ${sizes.medium}) {
 				font-size: 16px;
 			}
 		`;
 	},
 	XS: () => {
-		return `		
+		return `
 			font-size: 10px;
 		`;
 	}

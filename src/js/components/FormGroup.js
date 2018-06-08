@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Box } from 'grid-styled';
 
-const Element = styled.div`
+const FormGroup = styled(Box)`
+	+* {
+		margin-top: 20px;
+	}
+
 	>*+* {
 		margin-top: 10px;
 	}
 `;
-
-const FormGroup = ({ children }) => (
-	<Element>{ children }</Element>
-);
 
 export default FormGroup;

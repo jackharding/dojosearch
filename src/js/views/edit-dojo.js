@@ -6,7 +6,9 @@ import {
 	FormGroup,
 	TextInput,
 	Title,
-	ImageUploader
+	ImageUploader,
+	Button,
+	TagCheckboxes,
 } from '../components';
 
 class EditDojo extends Component {
@@ -28,7 +30,6 @@ class EditDojo extends Component {
 	}
 
 	updateForm = (e) => {
-		console.log(e.target.value);
 		this.setState({
 			form: {
 				...this.state.form,
@@ -37,15 +38,25 @@ class EditDojo extends Component {
 		});
 	}
 
+	submitForm = (e) => {
+		e.preventDefault();
+
+		this.setState({
+			sending: true
+		});
+
+		return false;
+	}
+
 	render() {
 		let { form, sending, completed, errors } = this.state;
 
 		return (
 			<Container>
-				<Title h={1} size={'MD'} text="Add a Dojo" />
-				<Flex flexWrap="wrap">
-					<Box w={[1, null, 1/2]}>
-						<FormGroup>			
+				<form onSubmit={this.submitForm}>
+					<Title h={1} size={'MD'} text="Add a Dojo" />
+					<Flex flexWrap="wrap">
+						<FormGroup w={[1, null, 1/2]}>
 							<TextInput 
 								name="Name"
 								value={form.name}
@@ -57,12 +68,51 @@ class EditDojo extends Component {
 								handleChange={this.updateForm}
 							/>				
 						</FormGroup>
-					</Box>
 
-					<Box w={[1, null, 1/2]}>
-						<ImageUploader />
-					</Box>
-				</Flex> 
+						<FormGroup w={[1, null, 1/2]}>
+							<Title h={3} size={'SM'} text="Photos" />
+							<ImageUploader />
+						</FormGroup>
+
+						<FormGroup w={[1, null, 1/2]}>
+							<Title h={3} size={'SM'} text="Tags" />
+							<TagCheckboxes />
+						</FormGroup>
+
+						<FormGroup w={[1, null, 1/2]}>
+							<Title h={3} size={'SM'} text="Contact information" />
+							<TextInput 
+								name="Email address"
+								value={form.emailAddress}
+								handleChange={this.updateForm}
+							/>
+							<TextInput 
+								name="Telephone"
+								value={form.telephone}
+								handleChange={this.updateForm}
+							/>
+							<TextInput 
+								name="Website"
+								value={form.website}
+								handleChange={this.updateForm}
+							/>
+							<TextInput 
+								name="Facebook URL"
+								value={form.facebookUrl}
+								handleChange={this.updateForm}
+							/>
+							<TextInput 
+								name="Twitter URL"
+								value={form.twitterUrl}
+								handleChange={this.updateForm}
+							/>
+						</FormGroup>
+
+						<FormGroup w={[1, null, null]}>
+							<Button>Submit</Button>
+						</FormGroup>
+					</Flex>
+				</form>
 			</Container>
 		);
 	}

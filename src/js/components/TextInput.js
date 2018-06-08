@@ -6,19 +6,19 @@ import camelCase from 'camelcase';
 import { screenReader } from '../utils/style';
 
 const Label = styled.label`
-	${props => props.label ? null : screenReader}
+	${props => props.showLabel ? undefined : screenReader}
 `;
 
 const TextInputContainer = styled.div``;
 
-const TextInput = ({ value, name, label, placeholder, theme, handleChange }) => {
+const TextInput = ({ value, name, showLabel, placeholder, theme, handleChange }) => {
 	const slug = camelCase(name);
 
 	return(
 		<TextInputContainer>
 			<Label 
 				htmlFor={slug} 
-				label={label}
+				showLabel={showLabel}
 			>
 				{name}
 			</Label>
@@ -38,14 +38,14 @@ const TextInput = ({ value, name, label, placeholder, theme, handleChange }) => 
 TextInput.propTypes = {
 	value: PropTypes.string,
 	name: PropTypes.string.isRequired,
-	label: PropTypes.bool,
+	showLabel: PropTypes.bool,
 	placeholder: PropTypes.bool,
 	handleChange: PropTypes.func
 }
 
 TextInput.defaultProps = {
 	value: '',
-	label: false,
+	showLabel: false,
 	placeholder: true
 }
 
