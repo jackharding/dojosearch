@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Box } from 'grid-styled';
 
-const FormGroup = styled(Box)`
+const FormGroup = Box.extend`
 	+* {
 		margin-top: 20px;
 	}

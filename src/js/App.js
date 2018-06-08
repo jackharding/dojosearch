@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider, injectGlobal } from 'styled-components';
 
-import { EditDojo } from './views';
+import routes from './config/routes';
+import { Footer } from './components';
 
 const theme = {
 	brandMain: 				'#C11712',
@@ -21,10 +23,19 @@ injectGlobal`
 	}
 
 	body {
+		display: flex;
+		min-height: 100vh;
 		margin: 0;
 		padding: 0;
 		font-family: 'Catamaran', sans-serif;
 		color: ${theme.black}
+	}
+
+	#root {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		width: 100%;
 	}
 	
 	input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
@@ -50,16 +61,34 @@ injectGlobal`
 		border: 0;
 		background: none;
 	}
+
+	svg {
+		max-width: 100%;
+		height: auto;
+	}
 `;
 
 class App extends Component {
     render() {
         return (
-            <div className="App">
-	            <ThemeProvider theme={theme}>          
-	                <EditDojo />
+            <Fragment>
+	            <ThemeProvider theme={theme}>
+	            	<Fragment>
+		                <Switch>
+		                    {routes.map((route, index) => (
+		                        <Route
+		                            key={index}
+		                            path={route.path}
+		                            exact={route.exact}
+		                            component={route.component}
+		                        />
+		                    ))}
+		                </Switch>
+
+		                <Footer />
+	            	</Fragment>
 	            </ThemeProvider>
-            </div>
+            </Fragment>
         );
     }
 }

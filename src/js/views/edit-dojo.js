@@ -48,6 +48,12 @@ class EditDojo extends Component {
 		return false;
 	}
 
+	addImage = (img) => {
+		this.setState({
+			images: [...this.state.form.images, img]
+		});
+	}
+
 	render() {
 		let { form, sending, completed, errors } = this.state;
 
@@ -71,7 +77,10 @@ class EditDojo extends Component {
 
 						<FormGroup w={[1, null, 1/2]}>
 							<Title h={3} size={'SM'} text="Photos" />
-							<ImageUploader />
+							<ImageUploader
+								addUploadedImage={this.addImage}
+								images={form.images}
+							/>
 						</FormGroup>
 
 						<FormGroup w={[1, null, 1/2]}>

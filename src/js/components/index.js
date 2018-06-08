@@ -6,3 +6,8 @@ export { default as ImageUploader } from './ImageUploader';
 export { default as ImageSquare } from './ImageSquare';
 export { default as TagCheckboxes } from './TagCheckboxes';
 export { default as Button } from './Button';
+export { default as Logo } from './Logo';
+export { default as Page } from './Page';
+export { default as Footer } from './Footer';
+export { default as SearchBar } from './SearchBar';
+export { default as InlineMenu } from './InlineMenu';

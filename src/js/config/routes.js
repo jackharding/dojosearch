@@ -1,6 +1,19 @@
+import {
+	Home,
+	EditDojo
+} from '../views';
+
 const routes = [
 	{
 		path: '/',
-		view: Home
-	}
+		component: Home,
+		exact: true
+	},
+	{
+		path: '/edit',
+		component: EditDojo,
+		exact: true
+	},
 ];
+
+export default routes;

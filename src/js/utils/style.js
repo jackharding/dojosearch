@@ -1,4 +1,4 @@
-const sizes = {
+export const sizes = {
 	small: '40em',
 	medium: '52em',
 	large: '64em',

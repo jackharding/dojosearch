@@ -23,42 +23,61 @@ const Square = styled.div`
 	}
 `;
 
-class UploadButton extends Component {
-	handleUpload = (e) => {
-		console.log(e.target.value);
-	}
-
-	render() {
-		return(
-			<Square>
-				<ImageSquare />
-				<input type="file" onChange={this.handleUpload} />
-			</Square>
-		);
-	}
+const UploadButton = ({ img, handleUpload }) => {
+	return(
+		<Square>
+			{ img && <ImageSquare img={img.src} alt={img.alt} /> }
+			<input type="file" onChange={handleUpload} />
+		</Square>
+	);
 }
 
 class ImageUploader extends Component {
 	state = {
-		sending: false
+		loading: false,
+		image: {}
+	}
+
+	upload = (e) => {
+		console.log('in upload', e)
+
+		if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = (event) => {
+            	let image = {
+            		src: event.target.result,
+					alt: ''
+            	};
+
+            	this.setState({ image });
+
+            	this.props.addUploadedImage(image);
+            };
+
+            reader.readAsDataURL(e.target.files[0]);
+
+            // TODO: file size/format validation
+        }
 	}
 
 	renderExistingImages = (images) => {
 		return images.map(img => (
-			<Box w={[1/4, null, 1/5, 1/6]}>
+			<Box w={[1/4, null, 1/5, 1/6]} key={img.src}>
 				<ImageSquare img={img.src} alt={img.alt} />
 			</Box>
 		));
 	}
 
 	render() {
-		let { images } = this.props;
+		let { images } = this.props,
+			{ loading, image } = this.state;
 
 		return(
 			<Flex flexWrap="wrap">
 				{ !!images.length && this.renderExistingImages(images) }
 				<Box w={[1/4, null, 1/5, 1/6]}>
-					<UploadButton />
+					<UploadButton handleUpload={this.upload} img={image} />
 				</Box>
 			</Flex>
 		);
