@@ -1,33 +1,13 @@
 import React, { Component, Fragment } from 'react';
 
 class TagCheckboxes extends Component {
-	state = {
-		selected: []
-	}
-
 	toggle = (e) => {
-		let newState,
-			{ id } = e.target,
-			{ selected } = this.state,
-			isSelected = selected.find(item => item === id);
-
-			console.log(isSelected, id, selected)
-
-		if(isSelected) {
-			newState = selected.filter(item => item !== id);
-		} else {
-			newState = [
-				...selected,
-				id
-			];
-		}
-
-		this.setState({ selected: newState });
+		this.props.handleChange(e.target.id);
 	}
 
 	checkIfSelected = (e) => {
 		let { id } = e.target,
-			{ selected } = this.state;
+			{ selected } = this.props;
 
 		return selected.find(item => item === id);
 	}

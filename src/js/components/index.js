@@ -11,3 +11,4 @@ export { default as Page } from './Page';
 export { default as Footer } from './Footer';
 export { default as SearchBar } from './SearchBar';
 export { default as InlineMenu } from './InlineMenu';
+export { default as TextArea } from './TextArea';

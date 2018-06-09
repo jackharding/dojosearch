@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Flex, Box } from 'grid-styled';
+import axios from 'axios';
 
 import {
 	Container,
 	FormGroup,
 	TextInput,
+	TextArea,
 	Title,
 	ImageUploader,
 	Button,
@@ -16,6 +18,7 @@ class EditDojo extends Component {
 		form: {
 			name: '',
 			location: '',
+			description: '',
 			images: [],
 			tags: [],
 			emailAddress: '',
@@ -45,12 +48,36 @@ class EditDojo extends Component {
 			sending: true
 		});
 
+		axios.post('http://localhost:25000/api/dojos/add', this.state.form);
+
 		return false;
 	}
 
 	addImage = (img) => {
 		this.setState({
 			images: [...this.state.form.images, img]
+		});
+	}
+
+	updateTags = (id) => {
+		let newState,
+			{ tags } = this.state.form,
+			isSelected = tags.find(item => item === id);
+
+		if(isSelected) {
+			newState = tags.filter(item => item !== id);
+		} else {
+			newState = [
+				...tags,
+				id
+			];
+		}
+
+		this.setState({
+			form: {
+				...this.state.form,
+				tags: newState
+			}
 		});
 	}
 
@@ -72,7 +99,12 @@ class EditDojo extends Component {
 								name="Location"
 								value={form.location}
 								handleChange={this.updateForm}
-							/>				
+							/>
+							<TextArea 
+								name="Description"
+								value={form.description}
+								handleChange={this.updateForm}
+							/>
 						</FormGroup>
 
 						<FormGroup w={[1, null, 1/2]}>
@@ -85,7 +117,7 @@ class EditDojo extends Component {
 
 						<FormGroup w={[1, null, 1/2]}>
 							<Title h={3} size={'SM'} text="Tags" />
-							<TagCheckboxes />
+							<TagCheckboxes selected={form.tags} handleChange={this.updateTags} />
 						</FormGroup>
 
 						<FormGroup w={[1, null, 1/2]}>
