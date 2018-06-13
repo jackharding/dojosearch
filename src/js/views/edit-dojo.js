@@ -11,13 +11,14 @@ import {
 	ImageUploader,
 	Button,
 	TagCheckboxes,
+	SearchBar,
 } from '../components';
 
 class EditDojo extends Component {
 	state = {
 		form: {
 			name: '',
-			location: '',
+			location: {},
 			description: '',
 			images: [],
 			tags: [],
@@ -25,7 +26,8 @@ class EditDojo extends Component {
 			telephone: '',
 			website: '',
 			facebookUrl: '',
-			twitterUrl: ''
+			twitterHandle: '',
+			instagramUsername: '',
 		},
 		sending: false,
 		completed: false,
@@ -95,11 +97,7 @@ class EditDojo extends Component {
 								value={form.name}
 								handleChange={this.updateForm}
 							/>
-							<TextInput 
-								name="Location"
-								value={form.location}
-								handleChange={this.updateForm}
-							/>
+							<SearchBar />
 							<TextArea 
 								name="Description"
 								value={form.description}
@@ -143,8 +141,13 @@ class EditDojo extends Component {
 								handleChange={this.updateForm}
 							/>
 							<TextInput 
-								name="Twitter URL"
-								value={form.twitterUrl}
+								name="Twitter Handle"
+								value={form.twitterHandle}
+								handleChange={this.updateForm}
+							/>
+							<TextInput 
+								name="Instagram Username"
+								value={form.instagramUsername}
 								handleChange={this.updateForm}
 							/>
 						</FormGroup>

@@ -4,7 +4,7 @@ const app = require('./app');
 
 import mongoose from 'mongoose';
 
-const PORT = process.env.PORT || 25000;
+const PORT = process.env.SERVER_PORT || 25000;
 
 mongoose.connect(process.env.DATABASE);
 mongoose.Promise = global.Promise;

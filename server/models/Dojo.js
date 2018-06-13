@@ -14,29 +14,33 @@ const dojoSchema = new mongoose.Schema({
 		type: String,
 		trim: true
 	},
-	tags: [String]
-	// created: {
-	// 	type: Date,
-	// 	default: Date.now
-	// },
-	// location: {
-	// 	type: {
-	// 		type: String,
-	// 		default: 'Point'
-	// 	},
-	// 	coordinates: [{
-	// 		type: Number,
-	// 		required: 'You must supply coordinates!'
-	// 	}],
-	// 	address: {
-	// 		type: String,
-	// 		required: 'You must supply an address!'
-	// 	}
-	// },
-	// photos: [{
-	// 	src: String,
-	// 	alt: String
-	// }],
+	tags: [String],
+	created: {
+		type: Date,
+		default: Date.now
+	},
+	location: {
+		type: {
+			type: String,
+			default: 'Point'
+		},
+		coordinates: [{
+			type: Number,
+			required: 'You must supply coordinates!'
+		}],
+		address: {
+			type: String,
+			required: 'You must supply an address!'
+		}
+	},
+	photos: [{
+		src: String,
+		alt: String
+	}],
+	socialMedia: [{
+		name: String,
+		url: String
+	}]
 	// author: {
 	// 	type: mongoose.Schema.ObjectId,
 	// 	ref: 'User',
@@ -45,9 +49,8 @@ const dojoSchema = new mongoose.Schema({
 });
 
 dojoSchema.pre('save', function(next) {
-	console.log('prevSAVE');
+	// If the name hasn't changed, skip creating a slug
 	if(!this.isModified('name')) {
-		console.log('NO')
 		return next();
 	}
 
