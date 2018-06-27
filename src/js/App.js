@@ -12,6 +12,7 @@ const theme = {
 	inputBorder: 			'#CCCCCC',
 	btnSubmit: 				'#1B5C8E',
 	disabled: 				'#bbbbbb',
+	greyLight: 				'#DDDDDD',
 }
 
 injectGlobal`
@@ -45,6 +46,7 @@ injectGlobal`
 		padding: 12px;
 		border: 1px solid ${theme.inputBorder};
 		color: ${theme.inputColor}
+		font-family: inherit;
 	}
 
 	h1,

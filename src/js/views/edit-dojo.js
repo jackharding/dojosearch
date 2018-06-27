@@ -32,6 +32,19 @@ class EditDojo extends Component {
 		sending: false,
 		completed: false,
 		errors: [],
+		hasBeenPopulated: false
+	}
+
+	static getDerivedStateFromProps(props, state) {
+		let { form } = props;
+
+		if(state.hasBeenPopulated || !form) return null;
+
+		return {
+			...state,
+			form,
+			hasBeenPopulated: true
+		}
 	}
 
 	updateForm = (e) => {
@@ -57,7 +70,10 @@ class EditDojo extends Component {
 
 	addImage = (img) => {
 		this.setState({
-			images: [...this.state.form.images, img]
+			form: {
+				...this.state.form,
+				images: [...this.state.form.images, img]
+			}
 		});
 	}
 

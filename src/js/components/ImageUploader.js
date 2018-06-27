@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
+import ReactSVG from 'react-svg';
 
-import { ImageSquare } from './';
+import { screenReader } from '../utils/style';
 
-// const UploadButton = styled.input`
-// 	position: absolute;
-// `;
+const boxSizes = ['calc(25% - (30px / 4))', null, 1/5, 1/6];
+
+const StyledBox = Box.extend`
+	&:not(:nth-of-type(4n)) {
+		margin-right: 10px;
+	}
+
+	&:nth-of-type(n+5) {
+		margin-top: 10px;
+	}
+`;
 
 const Square = styled.div`
 	position: relative;
 	height: 0;
 	padding-bottom: 100%;
+	background: ${props => props.theme.inputColor}
 
 	img {
 		position: absolute;
@@ -24,10 +34,17 @@ const Square = styled.div`
 `;
 
 const UploadButton = ({ img, handleUpload }) => {
+	const HiddenLabel = styled.span`${screenReader}`;
+
 	return(
-		<Square>
-			{ img && <ImageSquare img={img.src} alt={img.alt} /> }
-			<input type="file" onChange={handleUpload} />
+		<Square>		
+			<label htmlFor="uploadBtn">
+				<div style={{ padding: '20px' }}>
+					<HiddenLabel>Add an image</HiddenLabel>
+					<ReactSVG path="/svg/photo.svg" />
+				</div>
+			</label>
+			<input type="file" onChange={handleUpload} id="uploadBtn" style={{ display: 'none' }} />
 		</Square>
 	);
 }
@@ -63,9 +80,11 @@ class ImageUploader extends Component {
 
 	renderExistingImages = (images) => {
 		return images.map(img => (
-			<Box w={[1/4, null, 1/5, 1/6]} key={img.src}>
-				<ImageSquare img={img.src} alt={img.alt} />
-			</Box>
+			<StyledBox w={boxSizes} key={img.src}>
+				<Square>
+					<img src={img.src} alt={img.alt} />
+				</Square>
+			</StyledBox>
 		));
 	}
 
@@ -76,21 +95,12 @@ class ImageUploader extends Component {
 		return(
 			<Flex flexWrap="wrap">
 				{ !!images.length && this.renderExistingImages(images) }
-				<Box w={[1/4, null, 1/5, 1/6]}>
+				<StyledBox w={boxSizes}>
 					<UploadButton handleUpload={this.upload} img={image} />
-				</Box>
+				</StyledBox>
 			</Flex>
 		);
 	}
-}
-
-ImageUploader.defaultProps = {
-	images: [
-		{
-			src: 'http://fillmurray.com/700/1500',
-			alt: 'Billy boy'
-		}
-	]
 }
 
 export default ImageUploader;
