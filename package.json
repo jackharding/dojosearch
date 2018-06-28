@@ -37,7 +37,12 @@
     "start": "react-scripts start",
     "start:server": "SET NODE_ENV=production& nodemon server/index.js --exec babel-node --presets es2015,stage-2",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "react-test-renderer": "^16.4.1"
   }
 }

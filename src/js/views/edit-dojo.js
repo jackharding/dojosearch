@@ -10,7 +10,7 @@ import {
 	Title,
 	ImageUploader,
 	Button,
-	TagCheckboxes,
+	CheckboxGroup,
 	SearchBar,
 } from '../components';
 
@@ -131,7 +131,7 @@ class EditDojo extends Component {
 
 						<FormGroup w={[1, null, 1/2]}>
 							<Title h={3} size={'SM'} text="Tags" />
-							<TagCheckboxes selected={form.tags} handleChange={this.updateTags} />
+							<CheckboxGroup selected={form.tags} handleChange={this.updateTags} />
 						</FormGroup>
 
 						<FormGroup w={[1, null, 1/2]}>

@@ -11,6 +11,10 @@ const Label = styled.label`
 
 const TextInputContainer = styled.div``;
 
+const StyledTextarea = styled.textarea`
+	height: 200px;
+`;
+
 const TextArea = ({ value, name, showLabel, placeholder, theme, handleChange }) => {
 	const slug = camelCase(name);
 
@@ -23,7 +27,7 @@ const TextArea = ({ value, name, showLabel, placeholder, theme, handleChange }) 
 				{name}
 			</Label>
 
-			<textarea 
+			<StyledTextarea 
 				id={slug} 
 				name={slug} 
 				value={value}

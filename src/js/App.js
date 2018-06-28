@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider, injectGlobal } from 'styled-components';
 
 import routes from './config/routes';
+import { sizes } from './utils/style';
 import { Footer } from './components';
 
 const theme = {
@@ -13,6 +14,7 @@ const theme = {
 	btnSubmit: 				'#1B5C8E',
 	disabled: 				'#bbbbbb',
 	greyLight: 				'#DDDDDD',
+	sizes
 }
 
 injectGlobal`
@@ -65,6 +67,7 @@ injectGlobal`
 	}
 
 	svg {
+		display: block;
 		max-width: 100%;
 		height: auto;
 	}
