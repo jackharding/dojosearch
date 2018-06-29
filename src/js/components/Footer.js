@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 
-import { sizes } from '../utils/style';
+import { media } from '../utils/style';
 import { Container, InlineMenu } from './';
 
 const menuItems = [
@@ -33,12 +33,12 @@ const StyledFooter = styled.footer`
 		color: #fff;
 	}
 
-	@media screen and (min-width: ${sizes.small}) {
+	${media.small`
 		text-align: left;
 		nav {
 			text-align: right;
 		}
-	}
+	`};
 `;
 
 const StyledBox = Box.extend`
@@ -50,7 +50,7 @@ const StyledBox = Box.extend`
 		margin-bottom: 10px;
 	}
 
-	@media screen and (min-width: ${sizes.small}) {
+	${media.small`
 		&:first-of-type {
 			order: 1;
 		}
@@ -58,7 +58,7 @@ const StyledBox = Box.extend`
 			order: 2;
 			margin-bottom: 0;
 		}
-	}
+	`};
 `;
 
 const Footer = () => (

@@ -11,6 +11,7 @@ const CheckboxContainer = styled.div`
 			align-items: center;
 			color: ${({ theme }) => theme.inputColor};
 			font-size: 14px;
+			cursor: pointer;
 
 			svg {
 				display: block;
@@ -21,6 +22,18 @@ const CheckboxContainer = styled.div`
 
 			path#check {
 				display: none;
+			}
+
+			path#box {
+				transition: .3s fill;
+			}
+
+			&:hover {
+				svg {
+					path#box {
+						fill: ${({ theme }) => theme.inputColor}
+					}
+				}
 			}
 		}
 

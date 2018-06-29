@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { sizes } from '../utils/style';
+import { media } from '../utils/style';
 
 const StyledNav = styled.nav`
 	text-align: center;
@@ -18,7 +18,7 @@ const StyledNav = styled.nav`
 		font-weight: 700;
 	}
 
-	@media screen and (min-width: ${sizes.small}) {
+	${media.small`
 		text-align: left;
 
 		li {
@@ -27,7 +27,7 @@ const StyledNav = styled.nav`
 				margin-left: 32px;
 			}
 		}
-	}
+	`};
 `;
 
 const InlineMenu = ({ items }) => (

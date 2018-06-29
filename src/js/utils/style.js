@@ -1,7 +1,43 @@
+import { css } from 'styled-components';
+
 export const sizes = {
 	small: '40em',
 	medium: '52em',
 	large: '64em',
+}
+
+export const media = Object.keys(sizes).reduce((acc, label) => {
+	acc[label] = (...args) => css`
+		@media (min-width: ${sizes[label]}) {
+			${css(...args)}
+		}
+	`
+
+	return acc
+}, {});
+
+export const hoverOverlay = (color = 'rgba(255, 255, 255, 0.3)') => {
+	return`
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: ${color};
+			opacity: 0;
+			transition: .3s;
+			cursor: pointer;
+		}
+
+		&:hover {
+			&:before {
+				opacity: 1;
+			}
+		}
+	`;
 }
 
 export const screenReader = () => {

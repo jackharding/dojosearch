@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
+import { media } from '../utils/style';
 import { Checkbox } from './';
 
 const StyledDiv = styled.div`
@@ -14,7 +15,7 @@ const StyledDiv = styled.div`
 			margin-top: 10px;
 		}
 
-		@media screen and (min-width: ${({ theme }) => theme.sizes.small}) {
+		${media.small`
 			width: calc((100% / 3) - 10px);
 
 			&:nth-of-type(n+3) {
@@ -23,7 +24,7 @@ const StyledDiv = styled.div`
 			&:nth-of-type(n+4) {
 				margin-top: 10px;
 			}
-		}
+		`}
 	}
 `;
 

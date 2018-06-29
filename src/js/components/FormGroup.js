@@ -4,7 +4,7 @@ import { Box } from 'grid-styled';
 
 const FormGroup = Box.extend`
 	+* {
-		margin-top: 20px;
+		margin-top: 25px;
 	}
 
 	>*+* {

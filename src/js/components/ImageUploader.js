@@ -3,7 +3,7 @@ import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 import ReactSVG from 'react-svg';
 
-import { screenReader } from '../utils/style';
+import { screenReader, hoverOverlay } from '../utils/style';
 
 const acceptedFileTypes = ".svg,.jpg,.jpeg,.bmp,.gif,.png, image/svg+xml,image/jpeg,image/png,image/bmp,image/gif";
 const maxFileSize = 5242880; // 5MB
@@ -52,9 +52,10 @@ const UploadButton = ({ handleUpload }) => {
 		left: 0;
 		width: 100%;
 		height: 100%;
+		${hoverOverlay()}
 
 		svg {
-			margin:  0 auto;
+			margin: 0 auto;
 		}
 	`;
 
