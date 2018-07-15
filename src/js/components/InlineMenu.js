@@ -33,8 +33,8 @@ const StyledNav = styled.nav`
 const InlineMenu = ({ items }) => (
 	<StyledNav>
 		<ul>
-			{ items.map(item => (
-				<li>
+			{ items.map((item, i) => (
+				<li key={item.path+i}>
 					<Link to={item.path}>{ item.name }</Link>
 				</li>
 			)) }

@@ -13,6 +13,7 @@ import {
 	CheckboxGroup,
 	SearchBar,
 } from '../components';
+import { toggleArrayItem } from '../utils/helper';
 
 class EditDojo extends Component {
 	state = {
@@ -78,94 +79,84 @@ class EditDojo extends Component {
 	}
 
 	updateTags = (id) => {
-		let newState,
-			{ tags } = this.state.form,
-			isSelected = tags.find(item => item === id);
+        const tags = toggleArrayItem(this.state.form.tags, id);
 
-		if(isSelected) {
-			newState = tags.filter(item => item !== id);
-		} else {
-			newState = [
-				...tags,
-				id
-			];
-		}
-
-		this.setState({
-			form: {
-				...this.state.form,
-				tags: newState
-			}
-		});
-	}
+		this.setState({ tags });
+    }
 
 	render() {
 		let { form, sending, completed, errors } = this.state;
 
 		return (
-			<Container>
+			<Container page={true}>
 				<form onSubmit={this.submitForm}>
 					<Title h={1} size={'MD'} text="Add a Dojo" />
 					<Flex flexWrap="wrap">
 						<FormGroup w={[1, null, 1/2]}>
-							<TextInput 
-								name="Name"
-								value={form.name}
-								handleChange={this.updateForm}
-							/>
-							<SearchBar />
-							<TextArea 
-								name="Description"
-								value={form.description}
-								handleChange={this.updateForm}
-							/>
+							<Flex flexWrap="wrap">
+								<FormGroup w={1}>
+									<TextInput 
+										name="Name"
+										value={form.name}
+										handleChange={this.updateForm}
+									/>
+									<SearchBar />
+									<TextArea 
+										name="Description"
+										value={form.description}
+										handleChange={this.updateForm}
+									/>
+								</FormGroup>
+								<FormGroup w={1}>
+									<Title h={3} size={'SM'} text="Tags" />
+									<CheckboxGroup selected={form.tags} handleChange={this.updateTags} />
+								</FormGroup>
+							</Flex>
 						</FormGroup>
 
 						<FormGroup w={[1, null, 1/2]}>
-							<Title h={3} size={'SM'} text="Photos" />
-							<ImageUploader
-								addUploadedImage={this.addImage}
-								images={form.images}
-							/>
-						</FormGroup>
-
-						<FormGroup w={[1, null, 1/2]}>
-							<Title h={3} size={'SM'} text="Tags" />
-							<CheckboxGroup selected={form.tags} handleChange={this.updateTags} />
-						</FormGroup>
-
-						<FormGroup w={[1, null, 1/2]}>
-							<Title h={3} size={'SM'} text="Contact information" />
-							<TextInput 
-								name="Email address"
-								value={form.emailAddress}
-								handleChange={this.updateForm}
-							/>
-							<TextInput 
-								name="Telephone"
-								value={form.telephone}
-								handleChange={this.updateForm}
-							/>
-							<TextInput 
-								name="Website"
-								value={form.website}
-								handleChange={this.updateForm}
-							/>
-							<TextInput 
-								name="Facebook URL"
-								value={form.facebookUrl}
-								handleChange={this.updateForm}
-							/>
-							<TextInput 
-								name="Twitter Handle"
-								value={form.twitterHandle}
-								handleChange={this.updateForm}
-							/>
-							<TextInput 
-								name="Instagram Username"
-								value={form.instagramUsername}
-								handleChange={this.updateForm}
-							/>
+							<Flex flexWrap="wrap">
+								<FormGroup w={1}>
+									<Title h={3} size={'SM'} text="Photos" />
+									<ImageUploader
+										addUploadedImage={this.addImage}
+										images={form.images}
+									/>
+								</FormGroup>
+								<FormGroup w={1}>
+									<Title h={3} size={'SM'} text="Contact information" />
+									<TextInput 
+										name="Email address"
+										value={form.emailAddress}
+										handleChange={this.updateForm}
+									/>
+									<TextInput 
+										name="Telephone"
+										value={form.telephone}
+										handleChange={this.updateForm}
+									/>
+									<TextInput 
+										name="Website"
+										value={form.website}
+										handleChange={this.updateForm}
+									/>
+									<TextInput 
+										name="Facebook URL"
+										value={form.facebookUrl}
+										handleChange={this.updateForm}
+									/>
+									<TextInput 
+										name="Twitter Handle"
+										value={form.twitterHandle}
+										handleChange={this.updateForm}
+									/>
+									<TextInput 
+										name="Instagram Username"
+										value={form.instagramUsername}
+										handleChange={this.updateForm}
+									/>
+								</FormGroup>
+							</Flex>
 						</FormGroup>
 
 						<FormGroup w={[1, null, null]}>

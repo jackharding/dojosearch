@@ -51,9 +51,9 @@ const CheckboxContainer = styled.div`
 	// `}
 `;
 
-const Checkbox = ({ id, label, selected, handleChange, size }) => (
+const Checkbox = ({ id, label, checked, handleChange, size }) => (
 	<CheckboxContainer size={size}>
-		<input type="checkbox" id={id} onChange={handleChange} selected={selected} />
+		<input type="checkbox" id={id} onChange={handleChange} checked={checked} />
 		<label htmlFor={id}>
 			<ReactSVG path={'/svg/checkbox.svg'} />
 			<span>{label}</span>
@@ -62,7 +62,8 @@ const Checkbox = ({ id, label, selected, handleChange, size }) => (
 );
 
 Checkbox.defaultProps = {
-	size: 'sm'
+	size: 'sm',
+	checked: false
 }
 
 export default Checkbox;

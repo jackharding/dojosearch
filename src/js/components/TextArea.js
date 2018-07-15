@@ -33,6 +33,7 @@ const TextArea = ({ value, name, showLabel, placeholder, theme, handleChange }) 
 				value={value}
 				placeholder={placeholder && name}
 				onChange={handleChange}
+				onBlur={handleChange}
 			/>
 		</TextInputContainer>
 	);

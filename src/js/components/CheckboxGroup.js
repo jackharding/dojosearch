@@ -33,34 +33,35 @@ class CheckboxGroup extends Component {
 		this.props.handleChange(e.target.id);
 	}
 
-	checkIfSelected = (e) => {
-		let { id } = e.target,
-			{ selected } = this.props;
+	checkIfChecked = (val) => {
+		let { checked } = this.props;
 
-		return selected.find(item => item === id);
+		return checked.find(item => item === val);
 	}
 
 	render() {
-		let { tags } = this.props;
+		let { items } = this.props;
+
+		if(!items || !items.length) return null;
 
 		return(
 			<StyledDiv>
-				{ tags.map((tag, i) => (
-					<Checkbox 
-						id={tag} 
-						label={tag} 
-						handleChange={this.toggle} 
-						selected={this.checkIfSelected} 
-						key={`checkbox${i}`} 
-					/>
-				)) }
+				{ items.map((item, i) => {
+					let isChecked = this.checkIfChecked(item);
+
+					return(
+						<Checkbox 
+							id={item} 
+							label={item} 
+							handleChange={this.toggle} 
+							checked={isChecked} 
+							key={`checkbox${i}`} 
+						/>
+					);
+				}) }
 			</StyledDiv>
 		);
 	}
-}
-
-CheckboxGroup.defaultProps = {
-	tags: ['Wing Chun', 'MMA', 'BJJ', 'Muay Thai', 'Wrestling', 'Boxing', 'Karate', 'Sambo', 'Tae Kwon Do', 'Kung Fu', 'Judo', 'Aikido', 'Tai Chi', 'Kickboxing', 'Medieval', 'Krav Maga']
 }
 
 export default CheckboxGroup;

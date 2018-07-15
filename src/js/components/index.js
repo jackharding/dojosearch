@@ -12,3 +12,5 @@ export { default as Footer } from './Footer';
 export { default as SearchBar } from './SearchBar';
 export { default as InlineMenu } from './InlineMenu';
 export { default as TextArea } from './TextArea';
+export { default as ResultsFilter } from './ResultsFilter';
+export { default as Select } from './Select';

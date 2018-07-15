@@ -83,3 +83,44 @@ export const titleSizes = {
 export const getTitleStyleFromProps = (size) => {
 	return titleSizes[size];
 }
+
+export const addPaddingToCols = (widths) => {
+	console.log(widths)
+	if(!widths || !isNaN(widths)) return;
+
+	return widths.map((w, i) => {
+		let size;
+		if(w === 1 || w === null || w === '100%') return;
+
+		if(i === 0) {
+			size = 'small';
+		} else if (i === 1) {
+			size = 'medium'
+		} else if (i === 2) {
+			size = 'large';
+		}
+
+		return `
+			@media (min-width: ${sizes[size]}) {
+				&:first-of-type {
+					padding-right: 15px;
+				}
+
+				&:last-of-type {
+					padding-left: 15px;
+				}
+
+				&:not(:last-of-type):not(:first-of-type) {
+					padding-left: 15px;
+					padding-right: 15px;
+				}
+			}
+		`;
+	})
+}
+
+export const boxShadow = () => {
+	return `
+		box-shadow: 3px 3px 8px 1px rgba(0,0,0,0.15);
+	`;
+}

@@ -10,16 +10,19 @@ const app = firebase.initializeApp({
     messagingSenderId: "529864368815"
 });
 
-export const registerUser = async (req, res, next) => {
-    let { email, password } = req.body;
+app.auth().onAuthStateChanged((user) => {
+    // console.log(user);
+});
+
+export const registerUser = async ({ email, password }) => {
     const newUser = app.auth().createUserWithEmailAndPassword(email, password)
         .then(data => {
             console.log(data);
-            return data;
+            return data
         })
-        .catch(err => {
-            const error = new Error(err.message);
-            error.status = 400;
-            next(error);
-        });
+        .catch(err => err);
+}
+
+export default {
+    loggedIn: false
 }
