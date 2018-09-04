@@ -3,7 +3,15 @@ import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import ReactSVG from 'react-svg';
 
-import { Container, ResultsFilter } from '../components';
+import { Container, ResultsFilter, Map } from '../components';
+
+const results = [
+    {
+        name: 'Place 1',
+        lat: -34.397,
+        lng: 150.644,
+    }
+]
 
 const TopBar = () => {
 
@@ -61,6 +69,7 @@ class Dojos extends Component {
         return(
             <Fragment>
                 <TopBar />
+                <Map markers={results} />
             </Fragment>
         );
     }

@@ -14,3 +14,4 @@ export { default as InlineMenu } from './InlineMenu';
 export { default as TextArea } from './TextArea';
 export { default as ResultsFilter } from './ResultsFilter';
 export { default as Select } from './Select';
+export { default as Map } from './Map';
