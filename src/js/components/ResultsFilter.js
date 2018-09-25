@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 
 import site from '../config/site';
-import { Button, Title, CheckboxGroup, Select, FormGroup } from '../components';
+import { Button, CheckboxGroup, Select, FormGroup } from '../components';
+import { Title } from '../components/Text';
 import { toggleArrayItem } from '../utils/helper';
 import { boxShadow } from '../utils/style';
 

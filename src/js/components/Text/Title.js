@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { getTitleStyleFromProps } from '../utils/style';
+import { getTitleStyleFromProps } from '../../utils/style';
 
 const Heading1 = styled.h1`
 	${props => getTitleStyleFromProps(props.size)}

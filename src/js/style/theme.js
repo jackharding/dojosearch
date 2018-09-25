@@ -7,6 +7,9 @@ const theme = {
 	btnHover: 				'#2f80bf',
 	disabled: 				'#bbbbbb',
 	greyLight: 				'#DDDDDD',
+	fontSize: {
+		bodySm: '14px',
+	}
 }
 
 export default theme;

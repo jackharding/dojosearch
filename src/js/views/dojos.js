@@ -3,46 +3,37 @@ import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import ReactSVG from 'react-svg';
 
+import { ResultsContainer } from '../containers';
 import { Container, ResultsFilter, Map } from '../components';
 
-const results = [
-    {
-        name: 'Place 1',
-        lat: -34.397,
-        lng: 150.644,
+const StyledP = styled.p`
+    margin: 0;
+
+    span {
+        &:first-of-type {
+            font-size: 24px;
+        }
     }
-]
+`;
+
+const ResultCount = ({ count = 26 }) => {
+    return(
+        <StyledP><span>{count}</span> <span>results</span></StyledP>
+    );
+}
+
+const LayoutSwitch = ({ handleLayoutChange }) => {
+    return(
+        <Fragment>
+            <button>
+                {/* // IconButton */}
+                <ReactSVG path="/svg/icon-block-layout.svg" />
+            </button>
+        </Fragment>
+    );
+}
 
 const TopBar = () => {
-
-    const ResultCount = ({ count = 26 }) => {
-
-        const StyledP = styled.p`
-            margin: 0;
-
-            span {
-                &:first-of-type {
-                    font-size: 24px;
-                }
-            }
-        `;
-
-        return(
-            <StyledP><span>{count}</span> <span>results</span></StyledP>
-        );
-    }
-
-    const LayoutSwitch = ({ handleLayoutChange }) => {
-        return(
-            <Fragment>
-                <button>
-                    {/* // IconButton */}
-                    <ReactSVG path="/svg/icon-block-layout.svg" />
-                </button>
-            </Fragment>
-        );
-    }
-
     return(
         <Container>
             <Flex 
@@ -69,7 +60,7 @@ class Dojos extends Component {
         return(
             <Fragment>
                 <TopBar />
-                <Map markers={results} />
+                <ResultsContainer />
             </Fragment>
         );
     }

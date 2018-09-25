@@ -10,7 +10,7 @@ const CheckboxContainer = styled.div`
 			display: flex;
 			align-items: center;
 			color: ${({ theme }) => theme.inputColor};
-			font-size: 14px;
+			font-size: ${({ theme }) => theme.fontSize.bodySm};
 			cursor: pointer;
 
 			svg {

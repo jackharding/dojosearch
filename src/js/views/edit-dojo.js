@@ -7,12 +7,12 @@ import {
 	FormGroup,
 	TextInput,
 	TextArea,
-	Title,
 	ImageUploader,
 	Button,
 	CheckboxGroup,
 	SearchBar,
 } from '../components';
+import { Title } from '../components/Text';
 import { toggleArrayItem } from '../utils/helper';
 
 class EditDojo extends Component {
