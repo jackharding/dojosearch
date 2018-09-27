@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
-import { media } from '../utils/style';
+import { media } from '../../utils/style';
 import { Checkbox } from './';
 
 const StyledDiv = styled.div`

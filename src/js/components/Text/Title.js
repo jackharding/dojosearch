@@ -19,7 +19,7 @@ const Heading5 = styled.h5`
 	${props => getTitleStyleFromProps(props.size)}
 `;
 
-const Title = ({ text, h, size }) => {
+const Title = ({ children, h, size }) => {
 	let Element;
 
 	switch(h) {
@@ -42,11 +42,10 @@ const Title = ({ text, h, size }) => {
 			break;
 	}
 
-	return <Element size={size}>{text}</Element>
+	return <Element size={size}>{ children }</Element>
 }
 
 Title.defaultProps = {
-	text: 'Yes',
 	h: 1
 }
 

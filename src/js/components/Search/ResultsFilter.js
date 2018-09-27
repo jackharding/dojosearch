@@ -2,11 +2,13 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 
-import site from '../config/site';
-import { Button, CheckboxGroup, Select, FormGroup } from '../components';
-import { Title } from '../components/Text';
-import { toggleArrayItem } from '../utils/helper';
-import { boxShadow } from '../utils/style';
+import { Button } from '../Buttons';
+import { CheckboxGroup, Select, FormGroup } from '../Form';
+import { Title } from '../Text';
+
+import site from '../../config/site';
+import { toggleArrayItem } from '../../utils/helper';
+import { boxShadow } from '../../utils/style';
 
 const StyledDiv = styled.div`
     position: relative;

@@ -4,7 +4,9 @@ import { Flex, Box } from 'grid-styled';
 import ReactSVG from 'react-svg';
 
 import { ResultsContainer } from '../containers';
-import { Container, ResultsFilter, Map } from '../components';
+import { Container } from '../components/Layout';
+import { Map } from '../components/Map';
+import { ResultsFilter } from '../components/Search';
 
 const StyledP = styled.p`
     margin: 0;

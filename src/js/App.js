@@ -4,7 +4,7 @@ import { ThemeProvider, injectGlobal } from 'styled-components';
 
 import Context, { state } from './data';
 import routes from './config/routes';
-import { Footer } from './components';
+import { Header, Footer } from './components/Layout';
 import { 
 	base,
 	theme,
@@ -25,6 +25,8 @@ class App extends Component {
 						<Context.Consumer>
 							{props => (
 								<Fragment>
+									<Header />
+									
 									<Switch>
 										{routes.map((route, index) => (
 											<Route

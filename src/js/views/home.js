@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Flex, Box } from 'grid-styled';
 
-import { Page, Container, Logo, SearchBar } from '../components';
+import { Page, Container } from '../components/Layout';
+import { Logo } from '../components/Misc';
+import { SearchBar } from '../components/Search';
 
 class Home extends Component {
 	render() {

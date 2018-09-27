@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const IconButton = styled.button`
-
     path {
         fill: ;
     }
@@ -19,4 +18,4 @@ const IconButton = styled.button`
 	}
 `;
 
-export default Button;
+export default IconButton;

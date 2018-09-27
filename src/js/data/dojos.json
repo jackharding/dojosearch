@@ -1,0 +1,39 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1,
+                "name": "The MAT Academy",
+                "image": "http://fillmurray.com/500/400",
+                "tags": ["MMA", "BJJ", "Muay Thai", "Wrestling"],
+                "description": "Etiam pharetra quam sit amet arcu sagittis, ac placerat felis semper. Etiam vehicula pulvinar tellus, sed rhoncus ex porttitor dignissim. Nam facilisis augue feugiat, mollis tortor a, luctus ex. Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.",
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    51.5768762,
+                    -3.2935734
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 2,
+                "name": "Rob Taylor Academy",
+                "image": "http://fillmurray.com/500/400",
+                "tags": ["BJJ"],
+                "description": "Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.",
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    51.474059,
+                    -3.1605437
+                ]
+            }
+        }
+    ]
+}

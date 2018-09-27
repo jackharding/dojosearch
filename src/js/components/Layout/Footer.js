@@ -1,9 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 
-import { media } from '../utils/style';
-import { Container, InlineMenu } from './';
+import { media } from '../../utils/style';
+import { Container } from './';
+import { InlineMenu } from '../Nav';
 
 const menuItems = [
 	{
@@ -61,19 +63,23 @@ const StyledBox = Box.extend`
 	`};
 `;
 
-const Footer = () => (
-	<StyledFooter>
-		<Container>
-			<Flex flexWrap="wrap">
-				<StyledBox w={[1, 1/2, null]}>
-					<div>&copy; Dojosearch { new Date().getFullYear() }</div>
-				</StyledBox>
-				<StyledBox w={[1, 1/2, null]}>
-					<InlineMenu items={menuItems} />
-				</StyledBox>
-			</Flex>
-		</Container>
-	</StyledFooter>
-);
+const Footer = ({ location }) => {
+	if(location.pathname === '/search') return null;
 
-export default Footer;
+	return(
+		<StyledFooter>
+			<Container>
+				<Flex flexWrap="wrap">
+					<StyledBox w={[1, 1/2, null]}>
+						<div>&copy; Dojosearch { new Date().getFullYear() }</div>
+					</StyledBox>
+					<StyledBox w={[1, 1/2, null]}>
+						<InlineMenu items={menuItems} />
+					</StyledBox>
+				</Flex>
+			</Container>
+		</StyledFooter>
+	);
+}
+
+export default withRouter(Footer);

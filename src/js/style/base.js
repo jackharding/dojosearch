@@ -34,6 +34,10 @@ const base = css`
         font-family: 'Catamaran', sans-serif;
     }
 
+    p {
+        margin: 0;
+    }
+
     button {
         padding: 0;
         border: 0;

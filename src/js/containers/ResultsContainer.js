@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { Map } from '../components/Map';
-import ResultsList from '../components/ResultsList';
+import { ResultsList } from '../components/Search';
 
 const data = [
     {
@@ -23,6 +23,42 @@ const data = [
         lat: 51.474059,
         lng: -3.1605437
     },
+    {
+        id: 3,
+        name: 'Rob Taylor Academy',
+        image: 'http://fillmurray.com/500/400',
+        tags: ['BJJ'],
+        description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
+        lat: 51.474059,
+        lng: -3.1605437
+    },
+    {
+        id: 4,
+        name: 'Rob Taylor Academy',
+        image: 'http://fillmurray.com/500/400',
+        tags: ['BJJ'],
+        description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
+        lat: 51.474059,
+        lng: -3.1605437
+    },
+    {
+        id: 5,
+        name: 'Rob Taylor Academy',
+        image: 'http://fillmurray.com/500/400',
+        tags: ['BJJ'],
+        description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
+        lat: 51.474059,
+        lng: -3.1605437
+    },
+    {
+        id: 6,
+        name: 'Rob Taylor Academy',
+        image: 'http://fillmurray.com/500/400',
+        tags: ['BJJ'],
+        description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
+        lat: 51.474059,
+        lng: -3.1605437
+    }
 ]
 
 const ContentArea = styled.main`

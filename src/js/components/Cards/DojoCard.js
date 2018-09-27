@@ -11,18 +11,28 @@ const DojoCardWrap = styled.div`
     img {
         width: 225px;
     }
+
+    p {
+        margin-top: 10px;
+    }
+
+    +div {
+        margin-top: 15px;
+    }
 `;
 
 const DojoCardDetails = styled.div`
     flex: 1 0 0;
-    padding-left: 25px;
+    padding-left: 15px;
 `;
 
 const DojoCard = ({ id, name, tags, description, image }) => (
     <DojoCardWrap>
-        { image && <img src={image} alt="" /> }
+        <Link to={`/dojos/${id}`}>
+            { image && <img src={image} alt="" /> }
+        </Link>
         <DojoCardDetails>
-            <Title h={3}>{ name }</Title>
+            <Title h={3}><Link to={`/dojos/${id}`}>{ name }</Link></Title>
             <TagList tags={tags} />
             <p>{ description }</p>
         </DojoCardDetails>

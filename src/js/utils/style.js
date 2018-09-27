@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+import { theme } from '../style';
+
 export const sizes = {
 	small: '40em',
 	medium: '52em',
@@ -81,7 +83,14 @@ export const titleSizes = {
 }
 
 export const getTitleStyleFromProps = (size) => {
-	return titleSizes[size];
+	return css`
+		${titleSizes[size]};
+
+		a {
+			color: ${theme.black};
+			text-decoration: none;
+		}
+	`;
 }
 
 export const addPaddingToCols = (widths) => {
