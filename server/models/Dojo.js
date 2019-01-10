@@ -48,15 +48,22 @@ const dojoSchema = new mongoose.Schema({
 	// }
 });
 
-dojoSchema.pre('save', function(next) {
+dojoSchema.pre('save', async function(next) {
 	// If the name hasn't changed, skip creating a slug
 	if(!this.isModified('name')) {
 		return next();
 	}
 
 	this.slug = slugs(this.name);
+
+	const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+	const dojosWithSlug = await this.constructor.find({ slug: slugRegEx });
+
+	if (dojosWithSlug.length) {
+		this.slug = `${this.slug}-${dojosWithSlug.length + 1}`;
+	}
+
 	next();
-	// TODO: Unique slugs
 });
 
 const dojoModel = mongoose.model('Dojo', dojoSchema);

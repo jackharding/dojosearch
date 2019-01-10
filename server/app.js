@@ -44,13 +44,13 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 // Set the API routes
 app.use('/api', api);
 
-// app.use(session({
-// 	secret: process.env.SECRET,
-// 	key: process.env.KEY,
-// 	resave: false,
-// 	saveUninitialized: false,
-// 	store: new MongoStore({ mongooseConnection: mongoose.connection })
-// }));
+app.use(session({
+	secret: process.env.SECRET,
+	key: process.env.KEY,
+	resave: false,
+	saveUninitialized: false,
+	store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
 
 // Always return the main index.html, so react-router render the route in the client
 // app.use('/', pageLoader);

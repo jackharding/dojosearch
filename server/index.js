@@ -1,5 +1,7 @@
 require('dotenv').load();
-require('./models/Dojo');
+
+import { Dojo } from './models';
+
 const app = require('./app');
 
 import mongoose from 'mongoose';
