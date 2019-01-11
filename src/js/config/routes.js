@@ -18,7 +18,7 @@ const routes = [
 	{
 		path: '/search',
 		component: Dojos,
-		exact: true
+		// exact: true
 	},
 ];
 

@@ -26,13 +26,13 @@ const DojoCardDetails = styled.div`
     padding-left: 15px;
 `;
 
-const DojoCard = ({ id, name, tags, description, image }) => (
+const DojoCard = ({ slug, name, tags, description, image }) => (
     <DojoCardWrap>
-        <Link to={`/dojos/${id}`}>
+        <Link to={`/dojos/${slug}`}>
             { image && <img src={image} alt="" /> }
         </Link>
         <DojoCardDetails>
-            <Title h={3}><Link to={`/dojos/${id}`}>{ name }</Link></Title>
+            <Title h={3}><Link to={`/dojos/${slug}`}>{ name }</Link></Title>
             <TagList tags={tags} />
             <p>{ description }</p>
         </DojoCardDetails>

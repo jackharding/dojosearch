@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import ReactSVG from 'react-svg';
@@ -57,15 +58,15 @@ const TopBar = () => {
     );
 }
 
-class Dojos extends Component {
-    render() {
-        return(
-            <Fragment>
-                <TopBar />
-                <ResultsContainer />
-            </Fragment>
-        );
-    }
+const Dojos = ({ location: { state: { search } } }) => {
+    return(
+        <Fragment>
+            <TopBar />
+            <ResultsContainer
+                location={search}
+            />
+        </Fragment>
+    );
 }
 
-export default Dojos;
+export default withRouter(Dojos);
