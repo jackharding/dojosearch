@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import { fetchDojos } from '../api/dojos';
 import { Map } from '../components/Map';
 import { ResultsList } from '../components/Search';
 
@@ -73,6 +74,15 @@ const ContentArea = styled.main`
 `;
 
 class ResultsContainer extends Component {
+    componentDidMount() {
+        this.fetchDojos();
+    }
+
+    fetchDojos = async () => {
+        console.log('fetchinggg')
+        const dojos = await fetchDojos();
+    }
+
     render() {
         return(
             <ContentArea>

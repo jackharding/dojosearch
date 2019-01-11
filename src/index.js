@@ -6,7 +6,7 @@ import withAnalytics from './js/config/analytics';
 import App from './js/App';
 import registerServiceWorker from './registerServiceWorker';
 
-import './css/index.css';
+// import './css/index.css';
 
 ReactDOM.render(
 	<BrowserRouter>

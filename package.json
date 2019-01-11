@@ -24,8 +24,8 @@
     "nodemon": "^1.17.5",
     "path": "^0.12.7",
     "prop-types": "^15.6.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "16.8.0-alpha.0",
+    "react-dom": "16.8.0-alpha.0",
     "react-ga": "^2.5.3",
     "react-google-maps": "^9.4.5",
     "react-places-autocomplete": "^7.1.2",
@@ -41,7 +41,7 @@
   "scripts": {
     "babel-node": "babel-node --presets=stage-2 server",
     "start": "react-scripts start",
-    "start:server": "SET NODE_ENV=production& nodemon server/index.js --exec babel-node --presets es2015,stage-2",
+    "start:server": "SET NODE_ENV=production& nodemon --ignore 'src' server/index.js --exec babel-node --presets es2015,stage-2",
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"
