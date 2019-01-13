@@ -85,7 +85,17 @@ class ResultsContainer extends Component {
     }
 
     fetchDojos = async () => {
-        const { count, dojos } = await fetchDojos();
+        let { location: { location } } = this.props;
+
+        let args = {
+            distance: 50
+        };
+
+        if(location) {
+            args.coordinates = location.lat + ',' + location.lng;
+        }
+
+        const { count, dojos } = await fetchDojos(args);
 
         this.setState({
             count,

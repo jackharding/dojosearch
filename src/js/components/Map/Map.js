@@ -22,13 +22,14 @@ const Map = compose(
         defaultZoom={6}
         defaultCenter={{ lat: 54.0919578, lng: -7.1853154 }}
     >
-        { markers && markers.map(({ name, location: { coordinates } }) => {
+        { markers && markers.map(({ name, slug, location: { coordinates } }) => {
             let [lat, lng] = coordinates;
 
             return(
                 <Marker 
                     position={{ lat, lng }}
                     title={name}
+                    key={`marker${slug}`}
                 />
             );
         })}

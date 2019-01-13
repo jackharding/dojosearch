@@ -12,7 +12,7 @@ const ResultsListWrap = styled.div`
 const ResultsList = ({ results }) => {
     return(
         <ResultsListWrap>
-            { results.map(res => <DojoCard {...res} key={`res${res.id}`} />) }
+            { results.map(res => <DojoCard {...res} key={res.slug} />) }
         </ResultsListWrap>
     );
 }

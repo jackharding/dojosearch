@@ -7,6 +7,7 @@ const Container = Box.extend`
 	width: 100%;
 	max-width: 960px;
 	padding: ${({ page }) => page ? '20px 15px 50px' : ' 0 15px'};
+	${({ style }) => style}
 `;
 
 Container.defaultProps = {

@@ -48,6 +48,8 @@ const dojoSchema = new mongoose.Schema({
 	// }
 });
 
+dojoSchema.index({ location: '2dsphere' });
+
 dojoSchema.pre('save', async function(next) {
 	// If the name hasn't changed, skip creating a slug
 	if(!this.isModified('name')) {

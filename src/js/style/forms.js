@@ -7,7 +7,7 @@ const form = css`
     textarea {
         display: block;
         width: 100%;
-        padding: 12px;
+        padding: 8px 12px;
         border: 1px solid ${theme.inputBorder};
         color: ${theme.inputColor}
         font-family: inherit;

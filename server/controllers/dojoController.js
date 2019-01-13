@@ -1,20 +1,28 @@
 import mongoose from 'mongoose';
 const Dojo = mongoose.model('Dojo');
 
+export const getMetresFromMiles = (miles) => {
+	return miles * 1609.344;
+}
+
 const mapDojoQueryParams = (params) => {
 	if(!Object.keys(params).length) return null;
 
+	let { coordinates, distance = 10 } = params;
+
+	const $maxDistance = getMetresFromMiles(distance);
+
 	let obj = {};
 
-	for(let [key, val] of Object.entries(params)) {
-		if(key === 'coordinates') {
-			obj.location = {
-				$geoWithin: {
-					$geometry: {
-						type: 'Polygon',
-						coordinates: JSON.parse(val)
-					}
-				}
+	if(coordinates) {
+		obj.location = {
+			$near: {
+				$geometry: {
+					type: 'Polygon',
+					coordinates: coordinates.split(',')
+				},
+				$maxDistance,
+				$minDistance: 0,
 			}
 		}
 	}

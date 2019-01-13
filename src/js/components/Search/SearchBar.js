@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import queryString from 'query-string';
 
-const SearchBar = ({ history }) => {
+const SearchBar = ({ history, mini }) => {
 	const $input = React.useRef(null);
 
 	const [address, setAddress] = React.useState('');
@@ -56,7 +56,9 @@ const SearchBar = ({ history }) => {
 			onSelect={handleSelect}
 		>
 			{({ getInputProps, suggestions, getSuggestionItemProps }) => (
-				<SearchWrap>
+				<SearchWrap
+					mini={mini}
+				>
 					<input
 						{ ...getInputProps({
 							placeholder: 'Search Places ...',
@@ -93,6 +95,9 @@ const Suggestion = styled.div`
 	background: ${({ active }) => active ? '#fafafa' : '#ffffff'};
 `;
 
-const SearchWrap = styled.div``;
+const SearchWrap = styled.div`
+	width: ${({ mini }) => mini ? '225px' : '350px'};
+	max-width: 100%;
+`;
 
 export default withRouter(SearchBar);
