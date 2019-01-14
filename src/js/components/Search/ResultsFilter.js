@@ -6,7 +6,7 @@ import { Button } from '../Buttons';
 import { CheckboxGroup, Select, FormGroup } from '../Form';
 import { Title } from '../Text';
 
-import site from '../../config/site';
+import settings from '../../config/settings';
 import { toggleArrayItem } from '../../utils/helper';
 import { boxShadow } from '../../utils/style';
 
@@ -48,7 +48,7 @@ class ResultsFilter extends Component {
     render() {
         let { tags, distance, open } = this.state;
 
-        const distances = site.distances.map(i => `within ${i} miles`);
+        const distances = settings.distances.map(i => `within ${i} miles`);
 
         return(
             <StyledDiv>
@@ -58,7 +58,7 @@ class ResultsFilter extends Component {
                         <FormGroup flex={'1 0 0'}>
                             <Title h={3} size={'SM'} text="Tags" />
                             <CheckboxGroup 
-                                items={site.tags}
+                                items={settings.tags}
                                 checked={tags}
                                 handleChange={this.updateTags}
                             />

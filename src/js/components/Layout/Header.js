@@ -10,16 +10,16 @@ const Header = ({ location }) => {
     if(location.pathname === '/') return null;
 
     return(
-        <Container style={headerStyles}>
+        <HeaderWrap>
             <Link to={'/'}>
                 <Logo width={180} />
             </Link>
             <SearchBar mini />
-        </Container>
+        </HeaderWrap>
     );
 }
 
-const headerStyles = css`
+const HeaderWrap = styled(Container)`
     display: flex;
     align-items: center;
     padding-top: 25px;

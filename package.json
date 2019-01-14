@@ -42,7 +42,7 @@
   "scripts": {
     "babel-node": "babel-node --presets=stage-2 server",
     "start": "react-scripts start",
-    "start:server": "SET NODE_ENV=production& nodemon --ignore 'src' server/index.js --exec babel-node --presets es2015,stage-2",
+    "start:server": "SET NODE_ENV=production & nodemon server/index.js --exec babel-node --presets es2015,stage-2",
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"
@@ -51,5 +51,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "react-test-renderer": "^16.4.1"
+  },
+  "nodemonConfig": {
+    "ignore": ["src/*"]
   }
 }

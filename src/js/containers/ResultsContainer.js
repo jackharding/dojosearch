@@ -1,82 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Box, Flex } from 'grid-styled';
 import styled from 'styled-components';
 
 import { fetchDojos } from '../api/dojos';
 import { Map } from '../components/Map';
-import { ResultsList } from '../components/Search';
-
-// const data = [
-//     {
-//         id: 1,
-//         name: 'The MAT Academy',
-//         image: 'http://fillmurray.com/500/400',
-//         tags: ['MMA', 'BJJ', 'Muay Thai', 'Wrestling'],
-//         description: 'Etiam pharetra quam sit amet arcu sagittis, ac placerat felis semper. Etiam vehicula pulvinar tellus, sed rhoncus ex porttitor dignissim. Nam facilisis augue feugiat, mollis tortor a, luctus ex. Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
-//         lat: 51.5768762,
-//         lng: -3.2935734
-//     },
-//     {
-//         id: 2,
-//         name: 'Rob Taylor Academy',
-//         image: 'http://fillmurray.com/500/400',
-//         tags: ['BJJ'],
-//         description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
-//         lat: 51.474059,
-//         lng: -3.1605437
-//     },
-//     {
-//         id: 3,
-//         name: 'Rob Taylor Academy',
-//         image: 'http://fillmurray.com/500/400',
-//         tags: ['BJJ'],
-//         description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
-//         lat: 51.474059,
-//         lng: -3.1605437
-//     },
-//     {
-//         id: 4,
-//         name: 'Rob Taylor Academy',
-//         image: 'http://fillmurray.com/500/400',
-//         tags: ['BJJ'],
-//         description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
-//         lat: 51.474059,
-//         lng: -3.1605437
-//     },
-//     {
-//         id: 5,
-//         name: 'Rob Taylor Academy',
-//         image: 'http://fillmurray.com/500/400',
-//         tags: ['BJJ'],
-//         description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
-//         lat: 51.474059,
-//         lng: -3.1605437
-//     },
-//     {
-//         id: 6,
-//         name: 'Rob Taylor Academy',
-//         image: 'http://fillmurray.com/500/400',
-//         tags: ['BJJ'],
-//         description: 'Phasellus efficitur lorem sit amet quam posuere vehicula. Mauris mollis quis mauris vulputate tincidunt. Donec eleifend hendrerit justo, a blandit velit.',
-//         lat: 51.474059,
-//         lng: -3.1605437
-//     }
-// ]
-
-const ContentArea = styled.main`
-    display: flex;
-    justify-content: space-between;
-
-    >div {
-        &:first-of-type {
-            flex: 1 0 0;
-        }
-    }
-`;
+import { Container } from '../components/Layout';
+import { LayoutSwitch, ResultsCount, ResultsFilter, ResultsList } from '../components/Search';
 
 class ResultsContainer extends Component {
     state = {
         count: 0,
         results: [],
+        tags: [],
+        layout: 'rows',
         fetching: true,
     }
     
@@ -105,18 +41,82 @@ class ResultsContainer extends Component {
     }
 
     render() {
-        let { results, fetching } = this.state;
+        let { results, count, tags, layout, fetching } = this.state;
 
         console.log(results, fetching)
         if(fetching) return null;
 
         return(
-            <ContentArea>
-                <ResultsList results={results} />
-                <Map markers={results} />
-            </ContentArea>
+            <Fragment>
+                <Container>
+                    <Flex 
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <TopBarLeft>
+                            <ResultsCount count={count} />
+                            <ResultsFilter 
+                                active={tags} 
+                                onFilterChange={this.handleFilterChange}
+                            />
+                        </TopBarLeft>
+
+                        <Box>
+                            <LayoutSwitch 
+                                layout={layout}
+                                onLayoutChange={this.handleLayoutChange}
+                            />
+                        </Box>
+                    </Flex>
+                </Container>
+
+                <ContentArea>
+                    <ResultsList results={results} />
+                    <Map markers={results} />
+                </ContentArea>
+            </Fragment>
         );
     }
 }
+
+const ContentArea = styled.main`
+    display: flex;
+    justify-content: space-between;
+
+    >div {
+        &:first-of-type {
+            flex: 1 0 0;
+            padding-left: 15px;
+            padding-right: 15px;
+
+            @media screen and (min-width: 992px) {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            @media screen and (min-width: 1040px) {
+                flex: none;
+                width: 664px;
+            }
+        }
+
+        &:nth-of-type(2) {
+            @media screen and (min-width: 1040px) {
+                flex: 1 0 0;
+            }
+        }
+    }
+`;
+
+const TopBarLeft = styled.nav`
+    display: flex;
+    align-items: center;
+
+    p {
+        +div {
+            margin-left: 35px;
+        }
+    }
+`;
 
 export default ResultsContainer;

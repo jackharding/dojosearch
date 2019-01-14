@@ -88,9 +88,12 @@ const SearchBar = ({ history, mini }) => {
 
 const SuggestionsContainer = styled.div`
 	position: absolute;
+	padding: 4px 0;
+	background: #fafafa;
 `;
 
 const Suggestion = styled.div`
+	padding: 8px 12px;
 	cursor: pointer;
 	background: ${({ active }) => active ? '#fafafa' : '#ffffff'};
 `;

@@ -15,7 +15,7 @@ const base = css`
         margin: 0;
         padding: 0;
         font-family: 'Catamaran', sans-serif;
-        color: ${theme.black}
+        color: ${theme.black};
     }
 
     #root {
@@ -48,6 +48,10 @@ const base = css`
         display: block;
         max-width: 100%;
         height: auto;
+    }
+
+    img {
+        display: block;
     }
 `;
 
