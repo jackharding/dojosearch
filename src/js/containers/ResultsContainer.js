@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Box, Flex } from 'grid-styled';
 import styled from 'styled-components';
 
@@ -6,26 +6,26 @@ import { fetchDojos } from '../api/dojos';
 import { Map } from '../components/Map';
 import { Container } from '../components/Layout';
 import { LayoutSwitch, ResultsCount, ResultsFilter, ResultsList } from '../components/Search';
+import { toggleArrayItem } from '../utils/helper';
 
-class ResultsContainer extends Component {
-    state = {
-        count: 0,
-        results: [],
-        tags: [],
-        layout: 'rows',
-        fetching: true,
-    }
-    
-    componentDidMount() {
-        this.fetchDojos();
-    }
+const ResultsContainer = ({ location: { location } }) => {
+    const [tags, setTags] = useState([]);
+    const [distance, setDistance] = useState(50);
+    const [count, setCount] = useState(0);
+    const [results, setResults] = useState([]);
+    const [fetching, setFetching] = useState(true);
 
-    fetchDojos = async () => {
-        let { location: { location } } = this.props;
+    useEffect(() => {
+        _fetchDojos();
+    }, [tags, distance]);
 
+    const _fetchDojos = async () => {
         let args = {
-            distance: 50
+            distance,
+            tags: tags.join(',')
         };
+
+        setFetching(true);
 
         if(location) {
             args.coordinates = location.lat + ',' + location.lng;
@@ -33,52 +33,53 @@ class ResultsContainer extends Component {
 
         const { count, dojos } = await fetchDojos(args);
 
-        this.setState({
-            count,
-            results: dojos,
-            fetching: false,
-        })
+        setCount(count);
+        setResults(dojos);
+        setFetching(false);
     }
 
-    render() {
-        let { results, count, tags, layout, fetching } = this.state;
+    const handleFilterChange = (val, key) => {
+        if(key === 'tags') {
+            val = toggleArrayItem(tags, val);
 
-        console.log(results, fetching)
-        if(fetching) return null;
-
-        return(
-            <Fragment>
-                <Container>
-                    <Flex 
-                        justifyContent="space-between"
-                        alignItems="center"
-                    >
-                        <TopBarLeft>
-                            <ResultsCount count={count} />
-                            <ResultsFilter 
-                                active={tags} 
-                                onFilterChange={this.handleFilterChange}
-                            />
-                        </TopBarLeft>
-
-                        <Box>
-                            <LayoutSwitch 
-                                layout={layout}
-                                onLayoutChange={this.handleLayoutChange}
-                            />
-                        </Box>
-                    </Flex>
-                </Container>
-
-                <ContentArea>
-                    <ResultsList results={results} />
-                    <Map markers={results} />
-                </ContentArea>
-            </Fragment>
-        );
+            setTags(val);
+        } else if(key === 'distance') {
+            setDistance(val);
+        }
     }
+
+    return(
+        <Fragment>
+            <Container>
+                <Flex 
+                    justifyContent="space-between"
+                    alignItems="center"
+                >
+                    <TopBarLeft>
+                        <ResultsCount count={count} />
+                        <ResultsFilter 
+                            tags={tags} 
+                            distance={distance} 
+                            onFilterChange={handleFilterChange}
+                        />
+                    </TopBarLeft>
+
+                    <Box>
+                        {/* <LayoutSwitch 
+                            layout={layout}
+                            onLayoutChange={handleLayoutChange}
+                        /> */}
+                    </Box>
+                </Flex>
+            </Container>
+
+            <ContentArea>
+                <ResultsList results={results} />
+                <Map markers={results} />
+            </ContentArea>
+        </Fragment>
+    );
 }
-
 const ContentArea = styled.main`
     display: flex;
     justify-content: space-between;

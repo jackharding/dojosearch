@@ -8,7 +8,11 @@ export const getMetresFromMiles = (miles) => {
 const mapDojoQueryParams = (params) => {
 	if(!Object.keys(params).length) return null;
 
-	let { coordinates, distance = 10 } = params;
+	let { 
+		coordinates,
+		tags,
+		distance = 10,
+	 } = params;
 
 	const $maxDistance = getMetresFromMiles(distance);
 
@@ -24,6 +28,12 @@ const mapDojoQueryParams = (params) => {
 				$maxDistance,
 				$minDistance: 0,
 			}
+		}
+	}
+
+	if(tags) {
+		obj.tags = {
+			$in: tags.split(',')
 		}
 	}
 

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import queryString from 'query-string';
 
 const SearchBar = ({ history, mini }) => {
-	const $input = React.useRef(null);
+	const $input = useRef(null);
 
-	const [address, setAddress] = React.useState('');
-	const [selected, setSelected] = React.useState(null);
+	const [address, setAddress] = useState('');
+	const [selected, setSelected] = useState(null);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if(selected && selected.length) {
 			let searchState = {
 				formatted_address: selected[0].formatted_address,
@@ -101,6 +101,7 @@ const Suggestion = styled.div`
 const SearchWrap = styled.div`
 	width: ${({ mini }) => mini ? '225px' : '350px'};
 	max-width: 100%;
+	margin: ${({ mini }) => mini ? '0' : '0 auto'};
 `;
 
 export default withRouter(SearchBar);

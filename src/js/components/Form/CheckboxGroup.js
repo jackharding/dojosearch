@@ -36,6 +36,10 @@ class CheckboxGroup extends Component {
 	checkIfChecked = (val) => {
 		let { checked } = this.props;
 
+		if(!checked || !checked.length) {
+			return false;
+		}
+
 		return checked.find(item => item === val);
 	}
 

@@ -7,6 +7,7 @@ const theme = {
 	btnHover: 				'#2f80bf',
 	disabled: 				'#bbbbbb',
 	greyLight: 				'#DDDDDD',
+	white: 					'#FFFFFF',
 	fontSize: {
 		bodySm: '14px',
 	}
