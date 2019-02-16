@@ -5,7 +5,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 
 const MapContainer = styled.div`
     width: 35%;
-    height: 100vh;
+    height: 100%;
 `;
 
 const Map = compose(

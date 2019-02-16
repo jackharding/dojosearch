@@ -44,7 +44,7 @@ const DojoCardWrap = styled.div`
     }
 `;
 
-const DojoCardDetails = styled.div`
+export const DojoCardDetails = styled.div`
     position: relative;
     flex: 1 0 0;
     padding-left: 15px;

@@ -2,6 +2,7 @@ import {
 	Home,
 	EditDojo,
 	Dojos,
+	Dojo,
 } from '../views';
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
 	{
 		path: '/search',
 		component: Dojos,
+		// exact: true
+	},
+	{
+		path: '/dojos/:slug',
+		component: Dojo,
 		// exact: true
 	},
 ];

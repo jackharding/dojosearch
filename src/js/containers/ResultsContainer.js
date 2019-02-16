@@ -56,7 +56,10 @@ const ResultsContainer = ({ location: { location } }) => {
                     alignItems="center"
                 >
                     <TopBarLeft>
-                        <ResultsCount count={count} />
+                        <ResultsCount 
+                            count={count}
+                            fetching={fetching}
+                         />
                         <ResultsFilter 
                             tags={tags} 
                             distance={distance} 
@@ -83,6 +86,8 @@ const ResultsContainer = ({ location: { location } }) => {
 const ContentArea = styled.main`
     display: flex;
     justify-content: space-between;
+    height: calc(100vh - 124px);
+    overflow-y: auto;
 
     >div {
         &:first-of-type {
@@ -102,6 +107,12 @@ const ContentArea = styled.main`
         }
 
         &:nth-of-type(2) {
+            display: none;
+
+            @media screen and (min-width: 825px) {
+                display: block;
+            }
+
             @media screen and (min-width: 1040px) {
                 flex: 1 0 0;
             }

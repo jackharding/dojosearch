@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
-const ResultsCount = ({ count = 0 }) => {
+const ResultsCount = ({ fetching, count = 0 }) => {
     return(
-        <StyledP><span>{count}</span> <span>results</span></StyledP>
+        <StyledP>
+            { !fetching &&
+                <Fragment>
+                    <span>{count}</span> <span>results</span>
+                </Fragment>
+            }
+        </StyledP>
     );
 }
 
 const StyledP = styled.p`
+    width: 85px;
     margin: 0;
 
     span {

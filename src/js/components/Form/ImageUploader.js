@@ -63,7 +63,7 @@ const UploadButton = ({ handleUpload }) => {
 		<Square>		
 			<StyledLabel htmlFor="uploadBtn">
 				<HiddenLabel>Add an image</HiddenLabel>
-				<ReactSVG path="/svg/photo.svg" />
+				<ReactSVG path="/images/photo.svg" />
 			</StyledLabel>
 			<input 
 				type="file" 

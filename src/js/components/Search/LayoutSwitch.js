@@ -6,7 +6,7 @@ const LayoutSwitch = ({ layout, onLayoutChange }) => {
         <Fragment>
             <button>
                 {/* // IconButton */}
-                <ReactSVG path="/svg/icon-block-layout.svg" />
+                <ReactSVG path="/images/icon-block-layout.svg" />
             </button>
         </Fragment>
     );

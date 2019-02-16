@@ -55,7 +55,7 @@ const Checkbox = ({ id, label, checked, handleChange, size }) => (
 	<CheckboxContainer size={size}>
 		<input type="checkbox" id={id} onChange={handleChange} checked={checked} />
 		<label htmlFor={id}>
-			<ReactSVG path={'/svg/checkbox.svg'} />
+			<ReactSVG path={'/images/checkbox.svg'} />
 			<span>{label}</span>
 		</label>
 	</CheckboxContainer>

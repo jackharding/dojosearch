@@ -59,7 +59,7 @@ const SearchBar = ({ history, mini }) => {
 				<SearchWrap
 					mini={mini}
 				>
-					<input
+					<Input
 						{ ...getInputProps({
 							placeholder: 'Search Places ...',
 							className: 'location-search-input'
@@ -102,6 +102,14 @@ const SearchWrap = styled.div`
 	width: ${({ mini }) => mini ? '225px' : '350px'};
 	max-width: 100%;
 	margin: ${({ mini }) => mini ? '0' : '0 auto'};
+`;
+
+const Input = styled.input`
+	padding-right: 30px;
+	background-image: url('/images/icon-search.svg');
+	background-position: center right 10px;
+	background-repeat: no-repeat;
+	background-size: 15px;
 `;
 
 export default withRouter(SearchBar);
