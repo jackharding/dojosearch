@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { Flex, Box } from 'grid-styled';
+import { Flex, Box } from '@rebass/grid';
 import styled from 'styled-components';
 import ReactSVG from 'react-svg';
 
-import { screenReader, hoverOverlay } from '../../utils/style';
+import { SR, hoverOverlay } from '../../utils/style';
 
 const acceptedFileTypes = ".svg,.jpg,.jpeg,.bmp,.gif,.png, image/svg+xml,image/jpeg,image/png,image/bmp,image/gif";
 const maxFileSize = 5242880; // 5MB
 
 const boxSizes = ['calc(25% - (30px / 4))', null, 1/5, 1/6];
 
-const StyledBox = Box.extend`
+const StyledBox = styled(Box)`
 	&:not(:nth-of-type(4n)) {
 		margin-right: 10px;
 	}
@@ -42,7 +42,7 @@ const Square = styled.div`
 `;
 
 const UploadButton = ({ handleUpload }) => {
-	const HiddenLabel = styled.span`${screenReader}`;
+	const HiddenLabel = styled.span`${SR}`;
 	const StyledLabel = styled.label`
 		display: flex;
 		align-items: center;

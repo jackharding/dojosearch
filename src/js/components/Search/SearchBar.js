@@ -3,11 +3,15 @@ import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete'
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import queryString from 'query-string';
+import { useAction, useStore } from 'easy-peasy';
 
 const SearchBar = ({ history, mini }) => {
 	const $input = useRef(null);
 
-	const [address, setAddress] = useState('');
+	const search = useStore(state => state.search.params);
+	const updateSearch = useAction(dispatch => dispatch.search.update);
+
+	const [address, setAddress] = useState(search.formatted_address || '');
 	const [selected, setSelected] = useState(null);
 
 	useEffect(() => {
@@ -20,6 +24,8 @@ const SearchBar = ({ history, mini }) => {
 				},
 				bounds: selected[0].geometry.bounds,
 			}
+
+			updateSearch(searchState);
 
 			history.push({
 				// TODO: QUery strings?
@@ -90,6 +96,7 @@ const SuggestionsContainer = styled.div`
 	position: absolute;
 	padding: 4px 0;
 	background: #fafafa;
+	z-index: 999;
 `;
 
 const Suggestion = styled.div`

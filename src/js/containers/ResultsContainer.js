@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Box, Flex } from 'grid-styled';
+import { Box, Flex } from '@rebass/grid';
 import styled from 'styled-components';
 
 import { fetchDojos } from '../api/dojos';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Flex, Box } from 'grid-styled';
+import { Flex, Box } from '@rebass/grid';
 
 import { Page, Container } from '../components/Layout';
 import { Logo } from '../components/Misc';

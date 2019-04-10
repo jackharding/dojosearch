@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box } from 'grid-styled';
+import { Box } from '@rebass/grid';
 
 import { addPaddingToCols } from '../../utils/style';
 
-const FormGroup = Box.extend`
+const FormGroup = styled(Box)`
 	+* {
 		margin-top: 25px;
 	}

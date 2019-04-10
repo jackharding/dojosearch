@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { Flex, Box } from 'grid-styled';
+import { Flex, Box } from '@rebass/grid';
 import ReactSVG from 'react-svg';
 
 import { DojoContainer } from '../containers';

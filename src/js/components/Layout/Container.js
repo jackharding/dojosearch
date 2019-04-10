@@ -8,7 +8,8 @@ const Container = styled.div`
 	margin: 0 auto;
 
 	@media screen and (min-width: 992px) {
-		padding: 0 25px;
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 `;
 

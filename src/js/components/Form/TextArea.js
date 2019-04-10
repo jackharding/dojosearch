@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import camelCase from 'camelcase';
 
-import { screenReader } from '../../utils/style';
+import { SR } from '../../utils/style';
 
 const Label = styled.label`
-	${props => props.showLabel ? undefined : screenReader}
+	${props => props.showLabel ? undefined : SR}
 `;
 
 const TextInputContainer = styled.div``;

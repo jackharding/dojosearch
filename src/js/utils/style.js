@@ -42,7 +42,7 @@ export const hoverOverlay = (color = 'rgba(255, 255, 255, 0.3)') => {
 	`;
 }
 
-export const screenReader = () => {
+export const SR = () => {
 	return `
 		position: absolute;
 		width: 1px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Flex, Box } from 'grid-styled';
+import { Flex, Box } from '@rebass/grid';
 import styled from 'styled-components';
 
 import { media } from '../../utils/style';
@@ -43,7 +43,7 @@ const StyledFooter = styled.footer`
 	`};
 `;
 
-const StyledBox = Box.extend`
+const StyledBox = styled(Box)`
 	&:first-of-type {
 		order: 2;
 	}

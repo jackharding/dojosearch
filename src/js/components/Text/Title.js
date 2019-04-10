@@ -1,52 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { getTitleStyleFromProps } from '../../utils/style';
+const Title = styled.h1`
+	${({ theme, size }) => {
+		switch(size) {
+			case 'MD':
+				return `
+					margin-bottom: 15px;
+					font-size: 16px;
+					@media screen and (min-width: 52em) {
+						font-size: 18px;
+					}
+				`;
+			case 'SM':
+				return `
+					margin-bottom: 10px;
+					font-size: 14px;
+					text-transform: uppercase;
+					@media screen and (min-width: 52em) {
+						font-size: 16px;
+					}
+				`;
+			case 'XS':
+				return `
+					font-size: 10px;
+				`;
+			default:
+				return null;
+		}
+	}}
 
-const Heading1 = styled.h1`
-	${props => getTitleStyleFromProps(props.size)}
-`;
-const Heading2 = styled.h2`
-	${props => getTitleStyleFromProps(props.size)}
-`;
-const Heading3 = styled.h3`
-	${props => getTitleStyleFromProps(props.size)}
-`;
-const Heading4 = styled.h4`
-	${props => getTitleStyleFromProps(props.size)}
-`;
-const Heading5 = styled.h5`
-	${props => getTitleStyleFromProps(props.size)}
-`;
+	text-transform: ${({ upper }) => upper ? 'uppercase' : 'none'};
 
-const Title = ({ children, h, size }) => {
-	let Element;
-
-	switch(h) {
-		case 1:
-			Element = Heading1;
-			break;
-		case 2:
-			Element = Heading2;
-			break;
-		case 3:
-			Element = Heading3;
-			break;
-		case 4:
-			Element = Heading4;
-			break;
-		case 5:
-			Element = Heading5;
-			break;
-		default:
-			break;
+	a {
+		color: ${({ theme }) => theme.black};
+		text-decoration: none;
 	}
-
-	return <Element size={size}>{ children }</Element>
-}
+`;
 
 Title.defaultProps = {
-	h: 1
+	
 }
 
 export default Title;

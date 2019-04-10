@@ -1,6 +1,6 @@
 import React, { Component, Fragment, useState } from 'react';
 import styled from 'styled-components';
-import { Flex, Box } from 'grid-styled';
+import { Flex, Box } from '@rebass/grid';
 
 import { Button } from '../Buttons';
 import { CheckboxGroup, Select, FormGroup } from '../Form';

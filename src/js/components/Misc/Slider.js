@@ -27,6 +27,39 @@ const SliderWrap = styled.div`
     img {
         width: 100%;
     }
+
+    .slick-dots {
+        position: absolute;
+        bottom: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            display: inline-block;
+
+            +li {
+                margin-left: 6px;
+            }
+
+            &.slick-active {
+                button {
+                    opacity: 1;
+                }
+            }
+        }
+
+        button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: ${({ theme }) => theme.white};
+            font-size: 0;
+            opacity: .75;
+        }
+    }
 `;
 
 _Slider.defaultProps = {

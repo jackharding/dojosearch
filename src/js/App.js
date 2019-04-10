@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { ThemeProvider, injectGlobal } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import Context, { state } from './data';
 import routes from './config/routes';
@@ -11,7 +11,7 @@ import {
 	forms,
 } from './style';
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
 	${base}
 	${forms}
 `;
@@ -25,6 +25,8 @@ class App extends Component {
 						<Context.Consumer>
 							{props => (
 								<Fragment>
+									<GlobalStyle />
+
 									<Header />
 									
 									<Switch>

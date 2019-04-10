@@ -2,7 +2,10 @@ import { css } from 'styled-components';
 import theme from './theme';
 
 const form = css`
-    input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
     select,
     textarea {
         display: block;
